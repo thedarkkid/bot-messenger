@@ -1,0 +1,29 @@
+{
+  "name": "eaxcess-bot",
+  "version": "1.0.0",
+  "description": "A telegram bot to trade on the Deriv platform",
+  "main": "src/bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedarkkid/eaxcess-bot.git"
+  },
+  "keywords": [
+    "Trade",
+    "bot"
+  ],
+  "author": "thedarkkid.codes@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thedarkkid/eaxcess-bot/issues"
+  },
+  "homepage": "https://github.com/thedarkkid/eaxcess-bot#readme",
+  "dependencies": {
+    "@deriv/deriv-api": "^1.0.7",
+    "dotenv": "^8.2.0",
+    "telegraf": "^3.38.0"
+  }
+}
