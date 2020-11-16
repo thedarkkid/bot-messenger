@@ -1,0 +1,25 @@
+{
+  "messengerOptions":{
+    "messagesFolders":{
+      "on": [
+        {
+          "folder": "src/lib/messages/events",
+          "deep": true
+        }
+
+      ],
+      "hears": [
+        {
+          "folder": "src/lib/messages/replies",
+          "deep": true
+        }
+      ],
+      "commands":[
+        {
+          "folder": "src/lib/messages/commands",
+          "deep": true
+        }
+      ]
+    } 
+  }
+}
