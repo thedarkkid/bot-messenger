@@ -6,4 +6,3 @@
 dist
 /dist/
 .env
-/highway.js
