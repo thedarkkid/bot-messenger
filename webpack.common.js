@@ -1,24 +1,21 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry:{
-        script: "./src/entry.ts",
-        vendor: "./src/vendor.ts"
+entry:{
+        bot: "./src/bot.ts",
     },
+    target: 'node',
+    externals: [nodeExternals()],
     resolve: {
-        extensions: ['.ts', '.js', '.tsx']
+        extensions: ['.ts', '.js', '.tsx', ".webpack.js", ".web.js", ".mjs", ".json"]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: "src/index.html"
-        })
-    ],
     module: {
         rules: [
             {
-                test: /\.html$/,
-                use: ["html-loader"] // load assets as longtext
-            },
+                test: /\.mjs$/,
+                include: /node_modules/,
+                type: "javascript/auto",
+              },
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',

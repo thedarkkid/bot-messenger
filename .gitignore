@@ -6,3 +6,6 @@
 dist
 /dist/
 .env
+/vscode
+.vscode
+/.vscode
