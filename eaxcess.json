@@ -1,5 +1,6 @@
 {
   "messengerOptions":{
+    "messengerPath": "src/lib/messages/Messenger.ts",
     "messagesFolders":{
       "on": [
         {

@@ -71,13 +71,17 @@ export const  writeToFile = (content: string, filePath: string): boolean => {
     return true;
 };
 
-export const doInDir = (path: string, fn: (filePath: string) => void, deep:boolean = false) => {
+export const doInDir = (path: string, fn: (absFilePath: string, relFilePath: string) => void, deep:boolean = false) => {
     if(!dirExists(path)) throw Error(Messages.PATH_NONEXISTENT_ERROR(path));
     Fs.readdirSync(path).forEach(file => {
         const currentDir = path + "\\" + file;
         if (Fse.lstatSync(currentDir).isDirectory() && deep) doInDir(currentDir, fn, deep);
-        if (Fse.lstatSync(currentDir).isFile()) fn(currentDir);
+        if (Fse.lstatSync(currentDir).isFile()) fn(currentDir, file);
     });
+}
+
+export const getRelativePath = (abs: string, rel: string = ".") => {
+    return Path.relative(abs, rel)+"//"+rel;
 }
 
 export default {
@@ -91,5 +95,6 @@ export default {
     getDirs,
     getFileContents,
     writeToFile,
-    doInDir
+    doInDir,
+    getRelativePath
 };

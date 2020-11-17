@@ -1,7 +1,7 @@
 require("dotenv/config");
 import { Telegraf } from "telegraf";
 import {Spinner} from 'clui';
-import Messenger from "./messsages/Messenger";
+import Messenger from "./messages/Messenger";
 import IBotMessage from "../core/interfaces/IBotMessage";
 
 export default class Handler{
@@ -11,9 +11,9 @@ export default class Handler{
 
   protected static _run = async () => {
     await Messenger.loadMessages();
-    const commands: Map<string, IBotMessage> = new Map<string, IBotMessage>()
-    const events: Map<any, IBotMessage> = new Map<string, IBotMessage>();
-    const replies: Map<string, IBotMessage> = new Map<string, IBotMessage>();
+    const commands: Map<string, IBotMessage> = Messenger.commands;
+    const events: Map<any, IBotMessage> = Messenger.events;
+    const replies: Map<string, IBotMessage> = Messenger.replies;
 
     commands.forEach((value, key) => {
       botBrain.command(key, (ctx) => { value.execute(ctx); });
