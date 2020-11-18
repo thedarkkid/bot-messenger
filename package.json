@@ -1,5 +1,5 @@
 {
-  "name": "eaxcess-bot",
+  "name": "telegram-bot-scaffolding",
   "version": "1.0.0",
   "description": "Simple Boilerplate code for a webpack-sass-typescript application",
   "private": true,
