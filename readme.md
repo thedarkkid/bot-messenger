@@ -25,7 +25,7 @@ import IBotMessage from "./core/interfaces/IBotMessage";
 import { Context } from "telegraf";
 
 export default class BotMessage implements IBotMessage{
-  trigger: string = "start";
+  trigger: string = "trigger_text";
   execute = (ctx: Context) => {
     ctx.reply("bot message replies");
   }
@@ -35,4 +35,22 @@ The `trigger` property is the text that is used to trigger the `execute` method.
 
 ### Adding Commands
 The scaffolding uses [Telegraf](telegraf.js.org) to interact with the telegram bot so it uses the telegraf's [middleware](https://telegraf.js.org/#/?id=middleware) and [context](https://telegraf.js.org/#/?id=context). To create a command, you have to create a `BotMessage` class in the projects command directory. The default command directory is the `src/lib/messages/commands` directory. The scaffolding config can be found in the `messenger.json`, here you can modify the command directory add more command directories and many more.
- 
+
+#### Example
+Lets try to add a command `/start` to the telegram bot, which replies the user with "send in your name and email for reigstration". First we'd create a `BotMessage` class in the commands directory named `Start.ts` and it would look like so:
+
+```Typescript
+import IBotMessage from "../../../core/interfaces/IBotMessage";
+import { Context } from "telegraf";
+
+export default class Start implements IBotMessage{
+  trigger: string = "start";
+  execute = (ctx: Context) => {
+    ctx.reply("send in your name and email for registration");
+  }
+}
+```
+That is all!
+The `trigger` property in this case is the command phrase, since we want ours to be `/start`, the trigger property will be `start`. The execute method is the method called on the `/start` command. It uses the `ctx` property which is a telegraf context, more info on telegraf contexts can be found [here](https://telegraf.js.org/#/?id=context). Once a `BotMessage` class is in a commands directory the scaffolding automatically loads it as a command.
+
+
