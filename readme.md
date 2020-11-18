@@ -18,5 +18,21 @@ npm run watch
 ```
 This should start the development server.
 
+### Creating a BotMessage Class
+A bot message class is a class that extends the `IBotMessage` interface located in the `src/core/interfaces/IBotMessage`. A basic `BotMessage` class looks like this:
+```Typescript
+import IBotMessage from "./core/interfaces/IBotMessage";
+import { Context } from "telegraf";
+
+export default class BotMessage implements IBotMessage{
+  trigger: string = "start";
+  execute = (ctx: Context) => {
+    ctx.reply("bot message replies");
+  }
+}
+```
+The `trigger` property is the text that is used to trigger the `execute` method. It could be a `word`, `command` or `event name`.
+
 ### Adding Commands
 The scaffolding uses [Telegraf](telegraf.js.org) to interact with the telegram bot so it uses the telegraf's [middleware](https://telegraf.js.org/#/?id=middleware) and [context](https://telegraf.js.org/#/?id=context). To create a command, you have to create a `BotMessage` class in the projects command directory. The default command directory is the `src/lib/messages/commands` directory. The scaffolding config can be found in the `messenger.json`, here you can modify the command directory add more command directories and many more.
+ 
