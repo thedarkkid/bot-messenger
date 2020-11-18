@@ -34,7 +34,7 @@ export default class BotMessage implements IBotMessage{
 The `trigger` property is the text that is used to trigger the `execute` method. It could be a `word`, `command` or `event name`.
 
 ### Adding Commands
-The scaffolding uses [Telegraf](telegraf.js.org) to interact with the telegram bot so it uses the telegraf's [middleware](https://telegraf.js.org/#/?id=middleware) and [context](https://telegraf.js.org/#/?id=context). To create a command, you have to create a `BotMessage` class in the projects command directory. The default command directory is the `src/lib/messages/commands` directory. The scaffolding config can be found in the `messenger.json`, here you can modify the command directory add more command directories and many more.
+The scaffolding uses [Telegraf](telegraf.js.org) to interact with the telegram bot so it uses the telegraf's [middleware](https://telegraf.js.org/#/?id=middleware) and [context](https://telegraf.js.org/#/?id=context). To create a command, you have to create a `BotMessage` class in the projects command directory. The default command directory is the `src/lib/messages/commands` directory. The scaffolding config can be found in the `messenger.json`, here you can modify the command directory, add more command directories and many more.
 
 #### Example
 Lets try to add a command `/start` to the telegram bot, which replies the user with "send in your name and email for reigstration". First we'd create a `BotMessage` class in the commands directory named `Start.ts` and it would look like so:
@@ -53,4 +53,7 @@ export default class Start implements IBotMessage{
 That is all!
 The `trigger` property in this case is the command phrase, since we want ours to be `/start`, the trigger property will be `start`. The execute method is the method called on the `/start` command. It uses the `ctx` property which is a telegraf context, more info on telegraf contexts can be found [here](https://telegraf.js.org/#/?id=context). Once a `BotMessage` class is in a commands directory the scaffolding automatically loads it as a command.
 
+### Adding Event Listeners
+Event listeners enables your bot to listen to specific events in telegram, an event listener can be created by creating a `BotMessage` class in the events directory. The default events directory is the "src/lib/messages/events" directory. The scaffolding config can be found in the `messenger.json`, here you can modify the events directory, add more events directories and many more.
 
+#### Example
