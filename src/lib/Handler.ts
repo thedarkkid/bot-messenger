@@ -11,21 +11,14 @@ export default class Handler{
 
   protected static _run = async () => {
     await Messenger.loadMessages();
+
     const commands: Map<string, IBotMessage> = Messenger.commands;
-    const updates: Map<any, IBotMessage> = Messenger.updates;
     const texts: Map<string, IBotMessage> = Messenger.texts;
+    const updates: Map<any, IBotMessage> = Messenger.updates;
 
-    commands.forEach((value, key) => {
-      botBrain.command(key, (ctx) => { value.execute(ctx); });
-    });
-
-    updates.forEach((value, key) => {
-      botBrain.on(key, (ctx) => { value.execute(ctx); });
-    });
-
-    texts.forEach((value, key) => {
-      botBrain.hears(key, (ctx) => { value.execute(ctx); });
-    });
+    commands.forEach((value, key) => { botBrain.command(key, (ctx) => { value.execute(ctx); }); });
+    texts.forEach((value, key) => { botBrain.hears(key, (ctx) => { value.execute(ctx); }); });
+    updates.forEach((value, key) => { botBrain.on(key, (ctx) => { value.execute(ctx); }); });
   }
 
   static run = async () => {

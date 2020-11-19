@@ -1,5 +1,5 @@
 /* tslint:disable:prefer-for-of */
-import ILooseObject from "../core/interfaces/ILooseObject";
+import ILooseObject from "../interfaces/ILooseObject";
 
 export const NOT_ENOUGH_ARGS_NAMED_ERROR = (...args: string[]): string => {
         const message = "Not enough arguments given, command takes: \n";

@@ -1,6 +1,6 @@
 // tslint:disable:no-console
 
-import IEcho from "../core/interfaces/IEcho";
+import IEcho from "../interfaces/IEcho";
 import chalk from "chalk";
 // @ts-ignore
 

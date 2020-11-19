@@ -1,6 +1,6 @@
 require("dotenv/config");
 
-import Echo from "./helpers/Echo";
+import Echo from "./core/helpers/Echo";
 import Handler, { botBrain, dash } from "./lib/Handler";
 
 Handler.run().then(() => {

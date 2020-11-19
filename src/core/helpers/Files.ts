@@ -71,7 +71,7 @@ export const  writeToFile = (content: string, filePath: string): boolean => {
     return true;
 };
 
-export const doInDir = (path: string, fn: (absFilePath: string, relFilePath: string) => void, deep:boolean = false) => {
+export const doInDir = async (path: string, fn: (absFilePath: string, relFilePath: string) => void, deep:boolean = false) => {
     if(!dirExists(path)) throw Error(Messages.PATH_NONEXISTENT_ERROR(path));
     Fs.readdirSync(path).forEach(file => {
         const currentDir = path + "\\" + file;

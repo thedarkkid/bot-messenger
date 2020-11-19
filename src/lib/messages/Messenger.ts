@@ -1,10 +1,10 @@
-import Config from "../../helpers/Config";
+import Config from "../../core/helpers/Config";
 import path from "path";
 import IBotMessage from "../../core/interfaces/IBotMessage";
 import { dash } from "../Handler";
-import { doInDir } from "../../helpers/Files";
-import { projectBaseDir } from "../../helpers/Files";
-import Echo from "../../helpers/Echo";
+import { doInDir } from "../../core/helpers/Files";
+import { projectBaseDir } from "../../core/helpers/Files";
+import Echo from "../../core/helpers/Echo";
 
 export default class Messenger {
   static commands: Map<string, IBotMessage> = new Map<string, IBotMessage>();
@@ -26,32 +26,26 @@ export default class Messenger {
   }
 
   private static loadUpdates = async (eventFolders: Array<Object>) => {
-     // in on
-     dash.message("Loading updates...");
-     eventFolders.forEach( (onObj:any) => {
-       doInDir(projectBaseDir(onObj.folder), (absFilePath: string, relFilePath: string) => {
-         let importPath = Messenger.getFileRelativePathToMessenger(absFilePath);;
-         import(`${importPath}`).then(_import => {
-           const MessageObj = _import.default;
-           const messageObj = new MessageObj();
-           Messenger.updates.set(messageObj.trigger, messageObj);
-         });
-       }, onObj.deep);
+    dash.message("Loading updates...");
+    await eventFolders.forEach(async (onObj: any) => {
+      await doInDir(projectBaseDir(onObj.folder), async (absFilePath: string, relFilePath: string) => {
+        let importPath = Messenger.getFileRelativePathToMessenger(absFilePath);;
+        const _import = await import(`${importPath}`);
+        const messageObj = new (_import.default)();
+        Messenger.updates.set(messageObj.trigger, messageObj);
+      }, onObj.deep);
      });
-     dash.message("Updates Loaded...");
+    dash.message("Updates Loaded...");
   }
   
   private static loadCommands = async (commandFolders: Array<Object>) => {
-    // in commands
     dash.message("Loading commands...");
-    commandFolders.forEach((onObj: any) => {
-      doInDir(projectBaseDir(onObj.folder), (absFilePath: string, relFilePath: string) => {
+    await commandFolders.forEach(async (onObj: any) => {
+      await doInDir(projectBaseDir(onObj.folder), async (absFilePath: string, relFilePath: string) => {
         let importPath = Messenger.getFileRelativePathToMessenger(absFilePath);;
-        import(`${importPath}`).then(_import => {
-          const MessageObj = _import.default;
-          const messageObj = new MessageObj();
-          Messenger.commands.set(messageObj.trigger, messageObj);
-        });
+        const _import = await import(`${importPath}`);
+        const messageObj = new(_import.default)();
+        Messenger.commands.set(messageObj.trigger, messageObj);
       }, onObj.deep);
     });
     dash.message("Commands Loaded");
@@ -59,14 +53,12 @@ export default class Messenger {
 
   private static loadTexts = async (replyFolders: Array<Object>) => {
     dash.message("Loading texts...");
-    replyFolders.forEach( (onObj:any) => {
-      doInDir(projectBaseDir(onObj.folder), (absFilePath: string, relFilePath: string) => {
+    await replyFolders.forEach( async (onObj:any) => {
+      await doInDir(projectBaseDir(onObj.folder), async (absFilePath: string, relFilePath: string) => {
         let importPath = Messenger.getFileRelativePathToMessenger(absFilePath);;
-        import(`${importPath}`).then(_import => {
-          const MessageObj = _import.default;
-          const messageObj = new MessageObj();
-          Messenger.texts.set(messageObj.trigger, messageObj);
-        });
+        const _import = await import(`${importPath}`);
+        const messageObj = new(_import.default)();
+        Messenger.texts.set(messageObj.trigger, messageObj);
       }, onObj.deep);
     });
     dash.message("Texts Loaded");
