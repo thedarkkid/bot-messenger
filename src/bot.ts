@@ -5,8 +5,7 @@ import Handler, { botBrain, dash } from "./lib/Handler";
 
 Handler.run().catch(e => {
     dash.stop();
-    // Echo.error(e);
-    console.log(e)
+    Echo.error(e);
 });
 
 botBrain.launch();
