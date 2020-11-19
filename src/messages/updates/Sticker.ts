@@ -1,5 +1,5 @@
 import { Context } from "telegraf";
-import BotUpdate from "../../../core/lib/BotUpdate";
+import BotUpdate from "../../core/lib/BotUpdate";
 
 export default class Sticker extends BotUpdate{
   protected updateTypes: string = 'sticker';

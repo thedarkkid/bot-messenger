@@ -1,23 +1,23 @@
 {
   "messengerOptions":{
-    "messengerPath": "src/lib/messages/Messenger.ts",
+    "messengerPath": "src/Messenger.ts",
     "messagesFolders":{
       "updates": [
         {
-          "folder": "src/lib/messages/updates",
+          "folder": "src/messages/updates",
           "deep": true
         }
 
       ],
       "texts": [
         {
-          "folder": "src/lib/messages/texts",
+          "folder": "src/messages/texts",
           "deep": true
         }
       ],
       "commands":[
         {
-          "folder": "src/lib/messages/commands",
+          "folder": "src/messages/commands",
           "deep": true
         }
       ]

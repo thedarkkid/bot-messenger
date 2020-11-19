@@ -1,4 +1,4 @@
-import BotCommand from "../../../core/lib/BotCommand";
+import BotCommand from "../../core/lib/BotCommand";
 import { Context } from "telegraf";
 
 export default class New extends BotCommand{

@@ -1,6 +1,6 @@
 {
   "name": "bot-messenger",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Simple scaffolding to make the creation of telegram bots easier.",
   "private": true,
   "main": "dist/bot.bundle.js",
@@ -51,6 +51,7 @@
     "clui": "^0.3.6",
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
+    "semver": "^7.3.2",
     "telegraf": "^3.38.0"
   }
 }

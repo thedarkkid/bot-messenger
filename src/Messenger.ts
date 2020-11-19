@@ -1,10 +1,10 @@
-import Config from "../../core/helpers/Config";
+import Config from "./core/helpers/Config";
 import path from "path";
-import IBotMessage from "../../core/interfaces/IBotMessage";
-import { dash } from "../Handler";
-import { doInDir } from "../../core/helpers/Files";
-import { projectBaseDir } from "../../core/helpers/Files";
-import Echo from "../../core/helpers/Echo";
+import IBotMessage from "./core/interfaces/IBotMessage";
+import { dash } from "./core/Handler";
+import { doInDir } from "./core/helpers/Files";
+import { projectBaseDir } from "./core/helpers/Files";
+import Echo from "./core/helpers/Echo";
 
 export default class Messenger {
   static commands: Map<string, IBotMessage> = new Map<string, IBotMessage>();
@@ -19,7 +19,7 @@ export default class Messenger {
     Echo.success("Messages loaded.")
   }
 
-  private static getFileRelativePathToMessenger(absFilePath: string) {
+  protected static getFileRelativePathToMessenger(absFilePath: string) {
     const messsengerPath = Config.messengerFilePath;
     let relPath = path.relative(projectBaseDir(messsengerPath), absFilePath);
     return (relPath.replace("..\\", ".\\")).replace(/\\/g, "/");

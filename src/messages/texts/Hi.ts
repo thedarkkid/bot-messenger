@@ -1,5 +1,5 @@
 import { Context } from "telegraf";
-import BotText from "../../../core/lib/BotText";
+import BotText from "../../core/lib/BotText";
 
 export default class Hi extends BotText{
   protected triggers: string = "hi";
