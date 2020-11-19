@@ -12,13 +12,13 @@ BOT_TOKEN=<bot-token>
 ```
 where <bot-token> is the token given by botfather.
 
-The preconfigured watch script uses `concurrently` which has to be installed globally on your package manager.
+The preconfigured dev script uses `concurrently` which has to be installed globally on your package manager.
 ```bash
 npm install -g concurrently
 ```
-then you can start development server using the preconfigured watch script, run:
+then you can start development server using the preconfigured dev script, run:
 ```bash
-npm run watch
+npm run dev
 ```
 This should start the development server.
 
