@@ -1,7 +1,7 @@
 {
-  "name": "telegram-bot-scaffolding",
-  "version": "1.0.0",
-  "description": "Simple Boilerplate code for a webpack-sass-typescript application",
+  "name": "bot-messenger",
+  "version": "0.1",
+  "description": "Simple scaffolding to make the creation of telegram bots easier.",
   "private": true,
   "main": "dist/bot.bundle.js",
   "scripts": {

@@ -2,16 +2,16 @@
   "messengerOptions":{
     "messengerPath": "src/lib/messages/Messenger.ts",
     "messagesFolders":{
-      "on": [
+      "updates": [
         {
-          "folder": "src/lib/messages/events",
+          "folder": "src/lib/messages/updates",
           "deep": true
         }
 
       ],
-      "hears": [
+      "texts": [
         {
-          "folder": "src/lib/messages/replies",
+          "folder": "src/lib/messages/texts",
           "deep": true
         }
       ],

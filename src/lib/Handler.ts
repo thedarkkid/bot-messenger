@@ -12,18 +12,18 @@ export default class Handler{
   protected static _run = async () => {
     await Messenger.loadMessages();
     const commands: Map<string, IBotMessage> = Messenger.commands;
-    const events: Map<any, IBotMessage> = Messenger.events;
-    const replies: Map<string, IBotMessage> = Messenger.replies;
+    const updates: Map<any, IBotMessage> = Messenger.updates;
+    const texts: Map<string, IBotMessage> = Messenger.texts;
 
     commands.forEach((value, key) => {
       botBrain.command(key, (ctx) => { value.execute(ctx); });
     });
 
-    events.forEach((value, key) => {
+    updates.forEach((value, key) => {
       botBrain.on(key, (ctx) => { value.execute(ctx); });
     });
 
-    replies.forEach((value, key) => {
+    texts.forEach((value, key) => {
       botBrain.hears(key, (ctx) => { value.execute(ctx); });
     });
   }
